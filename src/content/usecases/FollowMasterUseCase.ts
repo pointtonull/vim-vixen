@@ -106,7 +106,7 @@ export default class FollowMasterUseCase {
       client.activateIfExists(tag, newTab, background);
       client.clearHints();
     });
-    if (background) {
+    if (newTab && background) {
         this.startFollow(newTab, background);
     }
   }
