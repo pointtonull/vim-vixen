@@ -101,13 +101,13 @@ export default class FollowMasterUseCase {
     this.followMasterRepository.clearTags();
 
     const newTab = this.followMasterRepository.getCurrentNewTabMode();
-    const background = this.followMasterRepository.getCurrentBackgroundMode();
+    const multi = this.followMasterRepository.getCurrentBackgroundMode();
     this.broadcastToSlaves((client) => {
-      client.activateIfExists(tag, newTab, background);
+      client.activateIfExists(tag, newTab, newTab);
       client.clearHints();
     });
-    if (newTab && background) {
-        this.startFollow(newTab, background);
+    if (multi) {
+        this.startFollow(newTab, multi);
     }
   }
 
