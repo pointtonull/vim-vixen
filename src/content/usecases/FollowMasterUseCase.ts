@@ -106,6 +106,9 @@ export default class FollowMasterUseCase {
       client.activateIfExists(tag, newTab, background);
       client.clearHints();
     });
+    if (background) {
+        this.startFollow(newTab, background);
+    }
   }
 
   enqueue(key: string): void {
